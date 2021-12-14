@@ -27,7 +27,9 @@ const testShow = {
     ]
 }
 
-test('renders without errors', () => { });
+test('renders without errors', () => {
+    render(<Show show={testShow} selectedSeason={'none'} />)
+});
 
 test('renders Loading component when prop show is null', () => { });
 
