@@ -62,4 +62,18 @@ test('renders show season options matching your data when the button is clicked'
     })
 });
 
-test('renders show season options matching your data when the button is clicked', () => { });
+test('renders show season options matching your data when the button is clicked', async () => {
+    mockFetchShow.mockResolvedValueOnce(testShow)
+
+    const displayFunc = jest.fn()
+
+    render(<Display displayFunc={displayFunc} />)
+
+    const button = screen.getByRole('button')
+
+    userEvent.click(button)
+
+    await waitFor(() => {
+        expect(displayFunc).toHaveBeenCalled()
+    })
+});
